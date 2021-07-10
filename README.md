@@ -14,4 +14,4 @@ A new Flutter based news application using NEWSAPI with darkmode and lightmode
 
 ## APK Link
 
-[Download APK](/build/app/outputs/flutter-apk/app-release.apk)
+[Download APK](releases/app-release.apk)
