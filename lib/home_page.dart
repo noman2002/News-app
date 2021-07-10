@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             )
           : SingleChildScrollView(
               child: Container(
-                color: context.theme.canvasColor,
+             
                 padding: EdgeInsets.all(8),
                 child: ListView.builder(
                   itemCount: articles.length,
