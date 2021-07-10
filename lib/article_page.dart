@@ -22,7 +22,7 @@ class _ArticlePageState extends State<ArticlePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "News India",
+          "NewsApp",
         ),
         centerTitle: true,
       ),
