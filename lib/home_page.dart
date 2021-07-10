@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:news_app/article_model.dart';
 import 'package:news_app/news.dart';
 
+import 'article_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -33,11 +35,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "NewsApp",
+          "News India",
           style: TextStyle(color: Colors.blue),
         ),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.grey[200],
         elevation: 0.0,
       ),
       body: _loading
@@ -48,14 +50,17 @@ class _HomePageState extends State<HomePage> {
             )
           : SingleChildScrollView(
               child: Container(
+                padding: EdgeInsets.all(8),
                 child: ListView.builder(
                   itemCount: articles.length,
                   shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return NewsCard(
                       imageUrl: articles[index].urlToImage ?? "",
                       title: articles[index].title ?? "",
                       desc: articles[index].description ?? "",
+                      url: articles[index].url,
                     );
                   },
                 ),
@@ -71,31 +76,49 @@ class NewsCard extends StatelessWidget {
     required this.imageUrl,
     required this.title,
     required this.desc,
+    @required this.url,
   }) : super(key: key);
 
   final String imageUrl, title, desc;
+  final String? url;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.blue[50],
-      child: ListTile(
-        leading: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.network(imageUrl),
-        ),
-        title: Text(
-          title,
-          style: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.bold,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ArticlePage(articleUrl: url!),
+            ));
+      },
+      child: Card(
+        color: Colors.blue[50],
+        child: ListTile(
+          leading: Container(
+            width: 80,
+            height: double.infinity,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
+          title: Text(
+            title,
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          // subtitle: Text(
+          //   desc,
+          //   style: TextStyle(
+          //     color: Colors.black54,
+          //   ),
+          // ),
         ),
-        // subtitle: Text(
-        //   desc,
-        //   style: TextStyle(
-        //     color: Colors.black54,
-        //   ),
-        // ),
       ),
     );
   }
