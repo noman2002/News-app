@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/article_model.dart';
 import 'package:news_app/news.dart';
-
+import 'package:velocity_x/velocity_x.dart';
 import 'article_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -35,12 +35,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "News India",
-          style: TextStyle(color: Colors.blue),
+          "NewsApp",
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey[200],
-        elevation: 0.0,
       ),
       body: _loading
           ? Center(
@@ -50,6 +47,7 @@ class _HomePageState extends State<HomePage> {
             )
           : SingleChildScrollView(
               child: Container(
+                color: context.theme.canvasColor,
                 padding: EdgeInsets.all(8),
                 child: ListView.builder(
                   itemCount: articles.length,
@@ -92,7 +90,7 @@ class NewsCard extends StatelessWidget {
             ));
       },
       child: Card(
-        color: Colors.blue[50],
+        color: context.theme.cardColor,
         child: ListTile(
           leading: Container(
             width: 80,
@@ -105,19 +103,16 @@ class NewsCard extends StatelessWidget {
               ),
             ),
           ),
-          title: Text(
-            title,
-            style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
+          title: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          // subtitle: Text(
-          //   desc,
-          //   style: TextStyle(
-          //     color: Colors.black54,
-          //   ),
-          // ),
         ),
       ),
     );

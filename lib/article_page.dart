@@ -1,6 +1,7 @@
 import 'dart:async';
-
+import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/theme.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ArticlePage extends StatefulWidget {
@@ -20,27 +21,24 @@ class _ArticlePageState extends State<ArticlePage> {
       Completer<WebViewController>();
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "News India",
-          style: TextStyle(color: Colors.blue),
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey[200],
-        elevation: 0.0,
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-      child: WebView(
-        initialUrl: widget.articleUrl,
-        onWebViewCreated: ((WebViewController webViewController) {
-          _completer.complete(webViewController);
-        }),
+        child: WebView(
+          initialUrl: widget.articleUrl,
+          onWebViewCreated: ((WebViewController webViewController) {
+            _completer.complete(webViewController);
+          }),
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
       ),
-    ),
     );
   }
 }
