@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'article_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,7 +22,6 @@ class News {
            
             content: element["context"],
           );
-
           news.add(articleModel);
         }
       });
