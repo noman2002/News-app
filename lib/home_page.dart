@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
   List<ArticleModel> articles = [];
   bool _loading = true;
 
