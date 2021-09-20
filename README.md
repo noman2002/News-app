@@ -1,6 +1,6 @@
 # news_app
 
-A new Flutter based news application using NEWSAPI with darkmode and lightmode
+A new Flutter based news application using NEWS API with darkmode and lightmode
 
 
 ## Light Mode
