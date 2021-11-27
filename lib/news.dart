@@ -21,6 +21,8 @@ class News {
             urlToImage: element["urlToImage"],
             content: element["context"],
           );
+
+          
           news.add(articleModel);
         }
       });
