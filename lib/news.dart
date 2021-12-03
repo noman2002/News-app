@@ -24,6 +24,8 @@ class News {
 
           
 
+
+
           news.add(articleModel);
         }
       });
